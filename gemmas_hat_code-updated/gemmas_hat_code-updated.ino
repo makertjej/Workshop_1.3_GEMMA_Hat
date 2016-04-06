@@ -1,9 +1,10 @@
 #include <Adafruit_NeoPixel.h>
 #include <avr/power.h>
 
-#define PIN0 0
-#define PIN1 1
-#define PIN2 2
+//Pin mappings. Change mappings to match your physical layout
+#define PIN0 0 //Signal to neopixel rings
+#define PIN1 1 //First reed switch, controls gameplay
+#define PIN2 2 //Second reed switch, controls rotation speed
 
 char col1=random(3);
 char col2=col1+3;
@@ -44,7 +45,7 @@ uint32_t myColors[] = {0x0000ff, 0x00ffff, 0x00ff00, 0xff9900, 0xff3300, 0xff009
 //   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
 //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(52, PIN2, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(52, PIN0, NEO_GRB + NEO_KHZ800);
 
 // IMPORTANT: To reduce NeoPixel burnout risk, add 1000 uF capacitor across
 // pixel power leads, add 300 - 500 Ohm resistor on first pixel's data input
@@ -53,10 +54,10 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(52, PIN2, NEO_GRB + NEO_KHZ800);
 //{}
 
 void setup() {
-  pinMode(PIN0, INPUT);
   pinMode(PIN1, INPUT);
-  digitalWrite(PIN0, HIGH);    // Activate internal pullup resistor
+  pinMode(PIN2, INPUT);
   digitalWrite(PIN1, HIGH);    // Activate internal pullup resistor
+  digitalWrite(PIN2, HIGH);    // Activate internal pullup resistor
 
   strip.begin();
   strip.show(); // Initialize all pixels to default
@@ -74,7 +75,7 @@ void loop() {
       levelup();
     }
     
-    else if(digitalRead(PIN0)) {
+    else if(digitalRead(PIN1)) {
       step1();
     }
     
@@ -121,10 +122,10 @@ uint8_t lightup() {
 
   strip.show();
   if(!digitalRead(PIN2)) {
-    delay(800);
+    delay(200);
   }  
   else {
-    delay(200);
+    delay(800);
   } 
   for (uint8_t i=0; i<52; i++) {
     strip.setPixelColor(i, 0);

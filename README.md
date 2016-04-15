@@ -13,7 +13,7 @@ Source kod för att skapa [Gemma’s Hat] (http://globalgamejam.org/2016/games/g
 
 * “Gemma_Hat_AlignPixels.ino” används under byggande för att rikta dem olika neopixel ringar.
 
-* “Gemma_Hat.ino” är själva spel-koden.
+* “Gemma_Hat_Game.ino” är själva spel-koden.
 
 Glöm inte micro eller mini-USB kabel (beror på vilken version av GEMMA man har).
 
@@ -31,6 +31,6 @@ Source code to make [Gemma’s Hat] (http://globalgamejam.org/2016/games/gemmas-
 
 * “Gemma_Hat_AlignPixels.ino” is used when assembling your hat to align the neopixel rings.
 
-* “Gemma_Hat.ino” is the game code.
+* “Gemma_Hat_Game.ino” is the game code.
 
 Don’t forget the micro or mini-USB cable (depends which version of GEMMA you have).

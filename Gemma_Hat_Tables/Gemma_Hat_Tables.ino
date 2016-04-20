@@ -1,32 +1,28 @@
 // MAKERTJEJ.se
 // Workshop 1.3: Digibling Game- Gemma's Hat
 //
-// Extra program #1:
-// Lights up special alignment pixels, used to "calibrate" the 
-// rings' positions in relation to each other.
+// Extra program #3:
+// Lights each 'table' in a different color.
 //
 
 #include <Adafruit_NeoPixel.h>
 
 #define PIN0 0
-#define PIN1 1
-#define PIN2 2
 
-uint32_t off = 0; //off
+uint32_t pink = 0; //pink
 uint32_t blue = 1; //blue
 uint32_t orange = 2; //orange
 uint32_t green = 3; //green
 
-//off, blue, orange, green
-uint32_t myColors[4] = {0x000000, 0x000066, 0xff6600, 0x00ff00};
+//pink, blue, orange, green
+uint32_t myColors[4] = {0xff0099, 0x000066, 0xff6600, 0x00ff00};
 
-//ALIGNMENT VERSION
-static char round1[16] = {blue, off, off, off, off, off, off, off, off, off, off, off, off, off, off, orange}; //first circle
-static char round2[16] = {orange, off, off, off, off, off, off, off, off, off, off, off, off, off, off, green}; //upper part of second circle
-static char round3[12] = {green, off, off, off, off, off, off, off, off, off, off, orange}; //third circle
-static char round4[8] = {orange, off, off, off, off, off, off, blue}; //lower part of second circle
+static char round1[16]; //first circle
+static char round2[16]; //upper part of second circle
+static char round3[12]; //third circle
+static char round4[8]; //lower part of second circle
 
-// Parameter 1 = number of pixels in strip
+// Parameter 1 = number of pixels in strip (12 + 16 + 24 = 52)
 // Parameter 2 = Arduino pin number (most are valid)
 // Parameter 3 = pixel type flags, add together as needed:
 //   NEO_KHZ800  800 KHz bitstream (most NeoPixel products w/WS2812 LEDs)
@@ -53,6 +49,22 @@ void loop() {
 
 
 void lightup() {
+
+  //Set one color per table
+  for(uint8_t i=0; i<16; i++) {
+      round1[i]=blue;
+  }
+  for(uint8_t i=0; i<16; i++) {
+      round2[i]=orange;
+  }
+  for(uint8_t i=0; i<12; i++) {
+      round3[i]=green;
+  }
+  for(uint8_t i=0; i<8; i++) {
+      round4[i]=pink;
+  }
+
+  
   
   for (uint8_t i=0; i<16; i++) {
     strip.setPixelColor(15-i, myColors[round1[i]]);
@@ -76,3 +88,4 @@ void lightup() {
 
   strip.show();
 }
+

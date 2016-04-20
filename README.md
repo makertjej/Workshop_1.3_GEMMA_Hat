@@ -15,6 +15,12 @@ Source kod för att skapa [Gemma’s Hat] (http://globalgamejam.org/2016/games/g
 
 * “Gemma_Hat_Game.ino” är själva spel-koden.
 
+Extra program:
+
+* “Gemma_Hat_PixelPosition.ino” tänder pixlar en åt gången, från position 0 till 51.
+
+* “Gemma_Hat_Tables.ino” tänder pixlar i varje tabell/runda med en unik färg.
+
 Glöm inte micro eller mini-USB kabel (beror på vilken version av GEMMA man har).
 
 ***
@@ -32,5 +38,11 @@ Source code to make [Gemma’s Hat] (http://globalgamejam.org/2016/games/gemmas-
 * “Gemma_Hat_AlignPixels.ino” is used when assembling your hat to align the neopixel rings.
 
 * “Gemma_Hat_Game.ino” is the game code.
+
+Extra programs:
+
+* “Gemma_Hat_PixelPosition.ino” lights up pixels one at a time, from position 0 to 51.
+
+* “Gemma_Hat_Tables.ino” lights up each table/round with a different color.
 
 Don’t forget the micro or mini-USB cable (depends which version of GEMMA you have).
